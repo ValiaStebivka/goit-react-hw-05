@@ -1,0 +1,17 @@
+.header {
+  margin-bottom: 40px;
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding: 20px 20px;
+  margin: 0 auto;
+  box-shadow: 0 5px 6px 0 #000;
+}
+
+.active {
+  color: rgb(247, 55, 26);
+  text-decoration: underline;
+}

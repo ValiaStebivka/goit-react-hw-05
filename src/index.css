@@ -1,0 +1,53 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  line-height: 1.5;
+  font-size: 18px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+.link {
+  color: #000;
+  font-size: 25px;
+  text-decoration: none;
+}
+
+.active {
+  color: rgb(247, 26, 26);
+  text-decoration: underline;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
+}
