@@ -6,7 +6,7 @@ import css from './MovieReviews.module.css';
 export default function MovieReviews() {
   const { movieId } = useParams();
   const [reviewsData, setReviewsData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -20,21 +20,22 @@ export default function MovieReviews() {
           setReviewsData([]);
         }
 
-        setLoading(false);
+        setIsLoading(false);
       } catch (error) {
         setError(error);
-        setLoading(false);
+        setIsLoading(false);
       }
     };
 
     fetchReviewsData();
   }, [movieId]);
 
-  if (loading) return <div>Loading reviews data...</div>;
-  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div>
+      {isLoading && <Loader />}
+      {error && <ErrorMessage />}
+
       <h3 className={css.title}>Movie Reviews</h3>
       <ul>
         {reviewsData.length > 0 ? (

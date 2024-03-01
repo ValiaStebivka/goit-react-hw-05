@@ -1,17 +1,23 @@
 import { useState, useEffect } from 'react';
 import { fetchPopular } from '../fetchArticles';
-import { MovieList } from '../components';
+import { ErrorMessage, Loader, MovieList } from '../components';
 
 export default function Home () {
   const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const getData = async () => {
+      setIsLoading(true)
       try {
         const result = await fetchPopular();
         setData(result.results);
       } catch (error) {
-        console.error(error);
+        setError(error)
+      }
+      finally {
+        setIsLoading(false)
       }
     };
     getData();
@@ -20,7 +26,9 @@ export default function Home () {
   return (
     <div>
       <h1>Trending today</h1>
-      <MovieList movies={data} />
+      {isLoading && <Loader />}
+      {error && <ErrorMessage />}
+      {data.length > 0 && <MovieList movies={data} />}
     </div>
   );
 }
