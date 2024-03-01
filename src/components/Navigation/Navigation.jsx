@@ -1,7 +1,7 @@
 import { Outlet, NavLink } from 'react-router-dom';
-import css from './Layout.module.css';
+import css from './Navigation.module.css';
 
-export default function Layout() {
+export default function Navigation() {
   return (
     <>
       <header className={css.header}>

@@ -2,9 +2,9 @@ import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
 import { useEffect, useState, Suspense } from 'react';
 import { getDataById } from '../../fetchArticles';
 import { BackLink, Loader, ErrorMessage } from '../../components';
-import css from './MovieDetails.module.css';
+import css from './MovieDetailsPage.module.css';
 
-export default function MovieDetails() {
+export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const [movieData, setMovieData] = useState(null);
   const [loading, setLoading] = useState(false);

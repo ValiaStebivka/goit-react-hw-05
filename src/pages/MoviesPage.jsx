@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
-import { SearchBox, Loader, ErrorMessage} from '../components';
+import { useSearchParams } from 'react-router-dom';
+import { SearchBox, Loader, ErrorMessage, MovieList} from '../components';
 import { fetchData } from '../fetchArticles';
 
 export default function Movies() {
@@ -9,7 +9,6 @@ export default function Movies() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const movieName = searchParams.get('query') ?? '';
-  const location = useLocation();
 
   const searchMovies = async query => {
     try {
@@ -25,18 +24,14 @@ export default function Movies() {
       setLoading(false);
     }
   };
-
+console.log(searchResults)
   return (
     <>
       <SearchBox value={movieName} onSearch={searchMovies} />
       {loading && <Loader />}
       {error && <ErrorMessage />}
       <div>
-        {searchResults.map(movie => (
-          <Link key={movie.id} to={`${movie.id}`} state={{ from: location }}>
-            <li>{movie.title}</li>
-          </Link>
-        ))}
+      <MovieList movies={searchResults} />
       </div>
     </>
   );

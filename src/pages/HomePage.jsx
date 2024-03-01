@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { fetchPopular } from '../fetchArticles';
 import { Link, useLocation } from 'react-router-dom';
 
-export default function Home() {
+export default function Home () {
   const [data, setData] = useState([]);
   const location = useLocation();
 
