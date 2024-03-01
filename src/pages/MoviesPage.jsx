@@ -24,7 +24,6 @@ export default function Movies() {
       setLoading(false);
     }
   };
-console.log(searchResults)
   return (
     <>
       <SearchBox value={movieName} onSearch={searchMovies} />

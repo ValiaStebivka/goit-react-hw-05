@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import { fetchPopular } from '../fetchArticles';
-import { Link, useLocation } from 'react-router-dom';
+import { MovieList } from '../components';
 
 export default function Home () {
   const [data, setData] = useState([]);
-  const location = useLocation();
 
   useEffect(() => {
     const getData = async () => {
@@ -21,15 +20,7 @@ export default function Home () {
   return (
     <div>
       <h1>Trending today</h1>
-      {data.map(item => (
-        <Link
-          key={item.id}
-          to={`/movies/${item.id}`}
-          state={{ from: location }}
-        >
-          <li>{item.title}</li>
-        </Link>
-      ))}
+      <MovieList movies={data} />
     </div>
   );
 }
