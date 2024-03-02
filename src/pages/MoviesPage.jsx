@@ -19,7 +19,7 @@ export default function Movies() {
       setIsLoading(true)
       try {
         const data = await fetchData(movieName)
-        setSearchResults(data)
+        setSearchResults(data.results)
       } catch (error) {
         setError(error)
       } finally {

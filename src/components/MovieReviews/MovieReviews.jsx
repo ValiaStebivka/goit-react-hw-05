@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { getReviews } from '../../fetchArticles';
 import { useParams } from 'react-router-dom';
+import { ErrorMessage } from '../ErrorMessage/ErrorMessage';
+import { Loader } from '../Loader';
 import css from './MovieReviews.module.css';
 
 export default function MovieReviews() {

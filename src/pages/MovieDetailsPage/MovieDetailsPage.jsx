@@ -1,8 +1,9 @@
-import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
-import { useEffect, useState, Suspense } from 'react';
+import { NavLink, Outlet, useParams, useLocation } from 'react-router-dom';
+import { useEffect, useState, Suspense, useRef } from 'react';
 import { getDataById } from '../../fetchArticles';
 import { BackLink, Loader, ErrorMessage } from '../../components';
 import css from './MovieDetailsPage.module.css';
+const defaultImg = 'https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg'
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
@@ -39,7 +40,7 @@ export default function MovieDetailsPage() {
         <div className={css.imageContent}>
           <img
             className={css.image}
-            src={poster_path ? `https://image.tmdb.org/t/p/w500/${movieData.poster_path}` : defaultImg}
+            src={movieData.poster_path ? `https://image.tmdb.org/t/p/w500/${movieData.poster_path}` : defaultImg}
             alt={movieData.title}
           />
         </div>
@@ -61,14 +62,14 @@ export default function MovieDetailsPage() {
       <h3 className={css.addInfo}>Additional information</h3>
       <ul className={css.details}>
         <li>
-          <Link to={`cast`} >
+          <NavLink to={`cast`} >
             Cast
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to={`reviews`} >
+          <NavLink to={`reviews`} >
             Reviews
-          </Link>
+          </NavLink>
         </li>
       </ul> </div>
 }
